@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Home from './Pages/Home';
+import Form from './Pages/Form';
 
 export default function App() {
   return (
-    <Home />
+    <Form />
   );
 }
