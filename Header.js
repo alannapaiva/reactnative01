@@ -1,12 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-function Header(){
-    return (
-        <View style={styles.container}>
-            <Text style={styles.headerText}>Header Component</Text>
-        </View>
-    );
+
+function Header(props) {
+  return (
+      <View style={styles.container}>
+       <Text style={styles.headerText}>{props.title}</Text>
+      </View>
+  );
 }
 
 const styles = StyleSheet.create({
