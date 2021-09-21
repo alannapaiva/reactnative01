@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Form from './Pages/Form';
+import Routes from './Routes';
 
 export default function App() {
   return (
-    <Form />
+    <Routes />
   );
 }
