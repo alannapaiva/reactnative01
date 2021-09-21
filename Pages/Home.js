@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Header from './Header';
 
 
-export default function App() {
+export default function Home() {
   
+  const navigation = useNavigation();
   const [Contadora, setContador] = useState(0);
   function incrementar(){
     setContador(Contadora+1);
@@ -18,9 +20,11 @@ export default function App() {
         <Text style={styles.title}>Hello World!</Text>
         <Text>{Contadora} toques!</Text>
         <TouchableOpacity style={styles.button} onPress={incrementar}>
-          <Text>Press Here</Text>
+            <Text>Press Here</Text>
         </TouchableOpacity>
-
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Form')}>
+            <Text>Navegar</Text>
+        </TouchableOpacity>
         <StatusBar style="auto" />
       </View>
     </>
