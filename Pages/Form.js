@@ -5,6 +5,18 @@ import Header from './Header';
 import logo from './Assets/user_group_new.png';
 
 function Form() {
+	const ufs = [
+		{label: 'RS', value: '1'},
+		{label: 'SC', value: '2'},
+		{label: 'PR', value: '3'},
+		{label: 'CE', value: '4'},
+		{label: 'MA', value: '5'},
+		{label: 'SP', value: '6'},
+		{label: 'MG', value: '7'},
+	];
+
+	const placeholder = { label: 'Selecione o estado', value: null, color:'black'};
+
   return (
 	<>
 		<Header title="Cadastro" />
@@ -15,10 +27,11 @@ function Form() {
 		<View style={styles.inputContainer}>
 			<TextInput style={styles.input} placeholder = "Digite o nome" /> 
 			<TextInput style={styles.input} placeholder = "Digite a idade" keyboardType={'numeric'}/>
+			<Picker placeholder={placeholder} onValueChange={() => {}} style={pickerSelectStyles} items={ufs} />
 			<TouchableOpacity style={styles.button}>
         		<Text style={styles.buttonText}>Salvar</Text>
     		</TouchableOpacity>
-
+			
 		</View>
 	</>
 	 
@@ -63,6 +76,27 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
     }
+});
+
+const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+        marginTop: 10,
+        height: 60,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        paddingHorizontal: 24,
+        fontSize: 16,
+        alignItems: 'stretch',
+    },
+    inputAndroid: {
+        marginTop: 10,
+        height: 60,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        paddingHorizontal: 24,
+        fontSize: 16,
+        alignItems: 'stretch',
+    },
 });
 
 export default Form;
