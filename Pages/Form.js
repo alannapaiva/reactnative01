@@ -27,16 +27,42 @@ function Form() {
 }
 
 const styles = StyleSheet.create({
-	container: {
-	  flex: 1,
-	  alignItems: 'center',
-	},
-	topImage: {
-		margin: 20,
-	},
-	title: {
-		fontSize: 20,
-	}
-  });
+    container: {
+      alignItems: 'center',
+    },
+    inputContainer: {
+        margin: 20,
+        alignItems: 'stretch',
+    },
+    topImage: {
+        margin: 20,
+    },
+    title: {
+        fontSize: 20,
+    },
+    input: {
+        marginTop: 10,
+        height: 60,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        paddingHorizontal: 24,
+        fontSize: 16,
+        alignItems: 'stretch',
+    },
+    button: {
+        marginTop: 10,
+        height: 60,
+        backgroundColor: 'green',
+        borderRadius: 10,
+        paddingHorizontal: 24,
+        fontSize: 16,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+    }
+});
 
 export default Form;
