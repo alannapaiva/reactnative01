@@ -10,11 +10,10 @@ function Form() {
     const [ufs, setEstados] = useState([]);
  
     useEffect(() => { 
-        axios.get('http://192.168.15.90:3030/estados')
-             .then(response => { 
-                 setEstados(response.data.map(estado => ({label: estado.uf, key: estado.uf, value: estado.uf}))); 
-             }); 
-        }, []);
+        axios.get('http://192.168.15.90:3030/estados').then(response => { 
+            setEstados(response.data.map(estado => ({label: estado.uf, key: estado.uf, value: estado.uf}))); 
+        }); 
+    }, []);
 
 	const placeholder = { label: 'Selecione o estado', value: '0', color:'black'};
 

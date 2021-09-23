@@ -6,11 +6,11 @@ import Header from './Header';
 
 
 export default function Home() {
-  
   const navigation = useNavigation();
-  const [Contadora, setContador] = useState(0);
+  
+  const [contador, setContador] = useState(0);
   function incrementar(){
-    setContador(Contadora+1);
+    setContador(contador+1);
   }
 
   return (
@@ -18,7 +18,7 @@ export default function Home() {
       <Header title="Header param" />
       <View style={styles.container}>
         <Text style={styles.title}>Hello World!</Text>
-        <Text>{Contadora} toques!</Text>
+        <Text>{contador} toques!</Text>
         <TouchableOpacity style={styles.button} onPress={incrementar}>
             <Text>Press Here</Text>
         </TouchableOpacity>
