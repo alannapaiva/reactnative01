@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import Picker from 'react-native-picker-select';
@@ -6,21 +6,16 @@ import Header from './Header';
 import logo from './Assets/user_group_new.png';
 
 function Form() {
-	const ufs = [
-		{label: 'RS', value: '1'},
-		{label: 'SC', value: '2'},
-		{label: 'PR', value: '3'},
-		{label: 'CE', value: '4'},
-		{label: 'MA', value: '5'},
-		{label: 'SP', value: '6'},
-		{label: 'MG', value: '7'},
-	];
 
-    useEffect(() => {
-        axios.get('exp://192.168.15.90:3030/estados').then(response => {
-            console.log(response.data);
-        })
-    }, []);
+    const [ufs, setEstados] = useState([]);
+ 
+    useEffect(() => { 
+        axios.get('http://192.168.0.103:3030/estados')
+             .then(response => { 
+                 setEstados(response.data.map(estado => ({label: estado.uf, key: estado.uf, value: estado.uf}))); 
+             }); 
+        }, []);
+
 	const placeholder = { label: 'Selecione o estado', value: null, color:'black'};
 
   return (
@@ -31,13 +26,12 @@ function Form() {
 			<Text style={styles.title}>Preencha o formulário abaixo:</Text>
 		</View>
 		<View style={styles.inputContainer}>
-			<TextInput style={styles.input} placeholder = "Digite o nome" /> 
-			<TextInput style={styles.input} placeholder = "Digite a idade" keyboardType={'numeric'}/>
-			<Picker placeholder={placeholder} onValueChange={() => {}} style={pickerSelectStyles} items={ufs} />
-			<TouchableOpacity style={styles.button}>
+			<TextInput style={styles.input} placeholder = "Digite o nome" onChangeText={handleNameChange} /> 
+			<TextInput style={styles.input} placeholder = "Digite a idade" keyboardType={'numeric'} onChangeText={handleAgeChange} />
+			<Picker placeholder={placeholder} onValueChange= {handleStateChange} style={pickerSelectStyles} items={ufs} />
+			<TouchableOpacity style={styles.button} onPress={handleButtonPress} >
         		<Text style={styles.buttonText}>Salvar</Text>
     		</TouchableOpacity>
-			
 		</View>
 	</>
 	 
