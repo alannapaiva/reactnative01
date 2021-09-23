@@ -10,13 +10,13 @@ function Form() {
     const [ufs, setEstados] = useState([]);
  
     useEffect(() => { 
-        axios.get('http://192.168.0.103:3030/estados')
+        axios.get('http://192.168.15.90:3030/estados')
              .then(response => { 
                  setEstados(response.data.map(estado => ({label: estado.uf, key: estado.uf, value: estado.uf}))); 
              }); 
         }, []);
 
-	const placeholder = { label: 'Selecione o estado', value: null, color:'black'};
+	const placeholder = { label: 'Selecione o estado', value: '0', color:'black'};
 
     const [nome, setNome] = useState('');
     const [idade, setIdade] = useState(0);
@@ -26,7 +26,9 @@ function Form() {
     function handleStateChange(state){ setEstado(state); }
 
     function handleButtonPress(){
-        console.log({nome, idade, estado});
+        axios.post('http://192.168.15.90:3031/cadastro', {nome, idade, estado}).then(response => {
+            alert(response.data.dados.length + ' cadastros!');
+        })
     }
 
   return (
