@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import axios from 'axios';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import Picker from 'react-native-picker-select';
 import Header from './Header';
@@ -15,6 +16,11 @@ function Form() {
 		{label: 'MG', value: '7'},
 	];
 
+    useEffect(() => {
+        axios.get('exp://192.168.15.90:3030/estados').then(response => {
+            console.log(response.data);
+        })
+    }, []);
 	const placeholder = { label: 'Selecione o estado', value: null, color:'black'};
 
   return (
