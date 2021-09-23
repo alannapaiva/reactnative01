@@ -18,6 +18,17 @@ function Form() {
 
 	const placeholder = { label: 'Selecione o estado', value: null, color:'black'};
 
+    const [nome, setNome] = useState('');
+    const [idade, setIdade] = useState(0);
+    const [estado, setEstado] = useState('');
+    function handleNameChange(name){ setNome(name); }
+    function handleAgeChange(age){ setIdade(parseInt(age)); }
+    function handleStateChange(state){ setEstado(state); }
+
+    function handleButtonPress(){
+        console.log({nome, idade, estado});
+    }
+
   return (
 	<>
 		<Header title="Cadastro" />
@@ -34,8 +45,6 @@ function Form() {
     		</TouchableOpacity>
 		</View>
 	</>
-	 
-	  
   );
 }
 
